@@ -2,20 +2,18 @@
 <html>
 <body>
 
-<button style="width:100vw; height: 100vh" id="play">Goal</button>
+<button style="width:100vw; height: 100vh; background: url(goallight1.png)" id="play"></button>
 <script>
 const element = document.getElementById("play");
 element.addEventListener("click", myFunction);
 
 function myFunction() {
-    var audio = new Audio('heybaby.m4a');
-    audio.loop = false;
-    audio.play(); 
+    var songList = ["heybaby.m4a", "canada2023.m4a", "leafs2024.m4a"];
 
-    setTimeout(function(){
-        audio.pause();
-        audio.currentTime = 0;
-    }, 12500);
+    var songName = songList[Math.floor(Math.random() * songList.length)];
+
+    var audio = new Audio(songName);    
+    audio.play();
 }
 </script>
 
