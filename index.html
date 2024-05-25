@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html>
-  hello world
+<body>
 
-<iframe width="420" height="345" src="heybaby.mp4" frameborder="0" allow="autoplay"></iframe>
-  
+<button style="width:100%; height: 100%" id="play">Goal</button>
+<script>
+const element = document.getElementById("play");
+element.addEventListener("click", myFunction);
+
+function myFunction() {
+    var audio = new Audio('heybaby.m4a');
+    audio.loop = false;
+    audio.play(); 
+
+    setTimeout(function(){
+        audio.pause();
+        audio.currentTime = 0;
+    }, 12500);
+}
+</script>
+
+</body>
 </html>
