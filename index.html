@@ -7,13 +7,32 @@
 const element = document.getElementById("play");
 element.addEventListener("click", myFunction);
 
-function myFunction() {
-    var songList = ["heybaby.m4a", "canada2023.m4a", "leafs2024.m4a", "hawkschelseadagger.m4a", "pens90srockandroll.m4a"];
+var audio = new Audio();
+var recents = [];
 
-    var songName = songList[Math.floor(Math.random() * songList.length)];
+var songList = ["heybaby.m4a", "canada2023.m4a", "leafs2024.m4a", "hawkschelseadagger.m4a", "pens90srockandroll.m4a"];
+var songName;
 
-    var audio = new Audio(songName);    
-    audio.play();
+function myFunction() {	
+	if (audio.paused) {
+		while (true) {
+			songName = songList[Math.floor(Math.random() * songList.length)];
+		
+			if (!recents.includes(songName)) {
+				if (recents.length >= 2) {
+					recents.shift();
+				}
+	
+					recents.push(songName);
+				break;
+			}
+		}
+		audio = new Audio(songName);
+		audio.play() 
+	}
+	else {
+		audio.pause();
+	}
 }
 </script>
 
